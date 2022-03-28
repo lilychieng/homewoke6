@@ -24,9 +24,6 @@ class LoginForm extends React.Component {
     }
     handlePW(event) {
       this.setState({password: event.target.value});
-      // sha256Lib.sha256(event.target.value).then( hash => {
-      //   this.setState({password: hash});
-      // })
     }
   
     handleSubmit(event) {

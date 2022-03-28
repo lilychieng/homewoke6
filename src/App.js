@@ -1,11 +1,17 @@
-
 import './App.css';
 import React from 'react';
+import {useState} from 'react'
 
 function App() {
+
+  const [data, setData] = useState("");
+  const [error, setError] = useState("");
+
   return (
+
+    // Headers and Text
     <div className="App">
-      <h1>Homework 6: LCC2483</h1>
+      <h1>Homework 6: Lily Chieng (LCC2483)</h1>
       <header className="App-header">
 
         <div class="flex-grid">
@@ -14,58 +20,36 @@ function App() {
           </div>
 
           <div class="flex-col">
-            Your Output Request to Server
+            Your Output Request to Server{/*: {String(data)}*/}
           </div>
         </div>
 
-        <div><LoginForm /></div>
+        <div class="flex-grid">
+
+          {/* Input Field */}
+          <div class="flex-col">
+            <input id = "pw-box-pads" type="text" value={data} onChange={
+              (e) => {
+                setData(e.target.value);
+                fetch("/name/" + e.target.value)
+                  .then(response => response.json())
+                  .then(data => {setError(data.last_name)})
+                  .catch(error => {setError(error)})
+                }
+              }
+                />
+          </div>
+
+          {/* Output Field */}
+          <div class="flex-col">
+            <textarea id = "u-box-pads" type="text" value={error} />
+          </div>
+
+        </div>
+
       </header>
     </div>
   );
-}
-
-class LoginForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {username: '', password: ''};
-    this.handleUser = this.handleUser.bind(this);
-    this.handlePW = this.handlePW.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleUser(event) {
-    this.setState({username: event.target.value});
-  }
-  handlePW(event) {
-    this.setState({password: event.target.value});
-  }
-
-  handleSubmit(event) {
-    alert('Logging in as: ' + this.state.password);
-    event.preventDefault();
-  }
-
-
-  render() {
-    return (
-      <form id = "form" onSubmit={this.handleSubmit} >
-        <div class="flex-grid">
-          <div class="flex-col">
-            <input id = "u-box-pads" type="text" value={this.state.username} onChange={this.handleUser} />
-          </div>
-
-          <div class="flex-col">
-          <input id = "pw-box-pads" type="text" value={this.state.password} onChange={this.handlePW} />
-          </div>
-        </div>
-
-        <div class ="flex-grid">
-          <input type="submit" value="Submit" />
-        </div>        
-
-      </form>
-    );
-  }
 }
 
 export default App;
