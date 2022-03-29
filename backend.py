@@ -1,11 +1,11 @@
 from flask import Flask, jsonify;
 from typing import Optional;
-from flask_cors import CORS
+# from flask_cors import CORS
 
 app = Flask(__name__, static_folder="/my-app/build", static_url_path="") 
 # app = Flask(__name__)
 
-CORS(app)
+# CORS(app)
 @app.route('/')
 def index():
     return app.send_static_file('index.html')
