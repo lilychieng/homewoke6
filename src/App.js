@@ -32,7 +32,7 @@ function App() {
                 setData(e.target.value);
                 // fetch("http://127.0.0.1:5000/name/" + e.target.value)
                 // fetch("http://localhost:5000/name/" + e.target.value)
-                  fetch("http://172.30.0.221:80/name/" + e.target.value)
+                  fetch("/name/<input>" + e.target.value)
                   .then(response => response.json())
                   .then(data => {setError(data.last_name)})
                   .catch(error => {setError(error)})
