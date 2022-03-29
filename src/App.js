@@ -31,7 +31,7 @@ function App() {
               (e) => {
                 setData(e.target.value);
                 // fetch("http://127.0.0.1:5000/name/" + e.target.value)
-                fetch("/name/" + e.target.value)
+                fetch("http://localhost:5000/name/" + e.target.value)
                   .then(response => response.json())
                   .then(data => {setError(data.last_name)})
                   .catch(error => {setError(error)})
