@@ -1,14 +1,14 @@
 from flask import Flask, jsonify;
 from typing import Optional;
 
-# from flask_cors import CORS
+from flask_cors import CORS
 from flask_restful import Api, Resource, reqparse
 import apihandler
 import os
 
 app = Flask(__name__, static_folder="../my-app/build", static_url_path="") 
 
-# CORS(app)
+CORS(app)
 api = Api(app)
 
 @app.route('/')
