@@ -4,11 +4,10 @@ import {useState} from 'react'
 
 function App() {
 
-  const [data, setData] = useState("");
+  const [data, setData] = useState();
   const [error, setError] = useState("");
 
   return (
-
     // Headers and Text
     <div className="App">
       <h1>Homework 6: Lily Chieng (LCC2483)</h1>
@@ -20,7 +19,7 @@ function App() {
           </div>
 
           <div class="flex-col">
-            Your Output Request to Server{/*: {String(data)}*/}
+            Your Output Request to Server
           </div>
         </div>
 
